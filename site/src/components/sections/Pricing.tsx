@@ -7,9 +7,19 @@ import SectionTitle from "@/components/ui/SectionTitle";
 const tariffs = [
   {
     icon: (
-      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <circle cx="12" cy="12" r="10" />
-        <polyline points="12 6 12 12 16 14" />
+      <svg width="28" height="28" viewBox="0 0 48 48" fill="none">
+        {/* City buildings + clock */}
+        <rect x="6" y="20" width="10" height="22" rx="1" stroke="currentColor" strokeWidth="2" />
+        <rect x="10" y="24" width="2" height="3" rx="0.5" fill="currentColor" opacity="0.4" />
+        <rect x="10" y="30" width="2" height="3" rx="0.5" fill="currentColor" opacity="0.4" />
+        <rect x="20" y="12" width="12" height="30" rx="1" stroke="currentColor" strokeWidth="2" />
+        <rect x="24" y="16" width="2" height="3" rx="0.5" fill="currentColor" opacity="0.4" />
+        <rect x="28" y="16" width="2" height="3" rx="0.5" fill="currentColor" opacity="0.4" />
+        <rect x="24" y="22" width="2" height="3" rx="0.5" fill="currentColor" opacity="0.4" />
+        <rect x="28" y="22" width="2" height="3" rx="0.5" fill="currentColor" opacity="0.4" />
+        <rect x="36" y="26" width="8" height="16" rx="1" stroke="currentColor" strokeWidth="2" />
+        <circle cx="40" cy="10" r="7" stroke="currentColor" strokeWidth="2" />
+        <path d="M40 6v4l2.5 1.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
       </svg>
     ),
     iconColor: "text-primary",
@@ -22,9 +32,17 @@ const tariffs = [
   },
   {
     icon: (
-      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M12 22s-8-4.5-8-11.8A8 8 0 0 1 12 2a8 8 0 0 1 8 8.2c0 7.3-8 11.8-8 11.8z" />
-        <circle cx="12" cy="10" r="3" />
+      <svg width="28" height="28" viewBox="0 0 48 48" fill="none">
+        {/* Road with pin markers */}
+        <path d="M8 40L20 8" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+        <path d="M40 40L28 8" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+        <path d="M14 24h20" stroke="currentColor" strokeWidth="1.5" strokeDasharray="4 3" opacity="0.4" />
+        <path d="M11 32h26" stroke="currentColor" strokeWidth="1.5" strokeDasharray="4 3" opacity="0.4" />
+        <circle cx="12" cy="10" r="5" stroke="currentColor" strokeWidth="2" />
+        <circle cx="12" cy="10" r="2" fill="currentColor" />
+        <circle cx="36" cy="10" r="5" stroke="currentColor" strokeWidth="2" />
+        <circle cx="36" cy="10" r="2" fill="currentColor" />
+        <path d="M17 10h14" stroke="currentColor" strokeWidth="1.5" strokeDasharray="3 2" opacity="0.5" />
       </svg>
     ),
     iconColor: "text-accent-purple",
@@ -38,8 +56,17 @@ const tariffs = [
   },
   {
     icon: (
-      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <polygon points="3 11 22 2 13 21 11 13 3 11" />
+      <svg width="28" height="28" viewBox="0 0 48 48" fill="none">
+        {/* Compass / long distance */}
+        <circle cx="24" cy="24" r="18" stroke="currentColor" strokeWidth="2" />
+        <circle cx="24" cy="24" r="14" stroke="currentColor" strokeWidth="1" strokeDasharray="3 3" opacity="0.25" />
+        <polygon points="24,8 27,22 24,26 21,22" fill="currentColor" opacity="0.8" />
+        <polygon points="24,40 21,26 24,22 27,26" fill="currentColor" opacity="0.3" />
+        <circle cx="24" cy="24" r="3" stroke="currentColor" strokeWidth="1.5" />
+        <path d="M24 4v2" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+        <path d="M24 42v2" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+        <path d="M4 24h2" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+        <path d="M42 24h2" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
       </svg>
     ),
     iconColor: "text-accent-orange",
@@ -53,9 +80,18 @@ const tariffs = [
   },
   {
     icon: (
-      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
-        <circle cx="12" cy="7" r="4" />
+      <svg width="28" height="28" viewBox="0 0 48 48" fill="none">
+        {/* Strong arm with box */}
+        <path d="M10 32c0-6 4-10 8-12l4-2" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+        <path d="M22 18c2 0 4 2 4 4v6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+        <path d="M10 32l-2 8" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+        <path d="M18 30l-2 10" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+        <circle cx="16" cy="10" r="6" stroke="currentColor" strokeWidth="2" />
+        <rect x="28" y="18" width="14" height="12" rx="2" stroke="currentColor" strokeWidth="2" />
+        <path d="M28 22h14" stroke="currentColor" strokeWidth="1" opacity="0.3" />
+        <path d="M35 14v4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+        <path d="M31 14h8" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+        <path d="M26 24l2-2" stroke="currentColor" strokeWidth="2" strokeLinecap="round" opacity="0.5" />
       </svg>
     ),
     iconColor: "text-accent-red",
@@ -97,12 +133,12 @@ export default function Pricing() {
               {tariff.icon}
             </div>
 
-            <span className="font-unbounded text-xs font-bold tracking-wider text-text-light">
+            <span className="font-unbounded text-xs font-bold tracking-wider text-text-light block h-10 mb-3">
               {tariff.label}
             </span>
 
-            <div className="mt-2 mb-4">
-              <span className={`font-unbounded text-4xl font-bold ${tariff.priceColor}`}>
+            <div className="mb-4 flex items-baseline">
+              <span className={`font-unbounded text-4xl font-bold tabular-nums tracking-tight ${tariff.priceColor}`}>
                 {tariff.price}
               </span>
               <span className="text-xl text-text-secondary ml-1">₽</span>

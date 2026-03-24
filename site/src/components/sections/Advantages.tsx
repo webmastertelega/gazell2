@@ -10,9 +10,18 @@ const advantages = [
     title: "Быстрая подача",
     description: "Приезжаю от 30 минут после заявки. Не заставлю ждать.",
     icon: (
-      <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-        <circle cx="12" cy="12" r="10" />
-        <polyline points="12 6 12 12 16 14" />
+      <svg width="40" height="40" viewBox="0 0 48 48" fill="none">
+        {/* Speedometer / fast clock */}
+        <circle cx="24" cy="24" r="20" stroke="currentColor" strokeWidth="2" fill="none" />
+        <circle cx="24" cy="24" r="16" stroke="currentColor" strokeWidth="1" strokeDasharray="3 3" fill="none" opacity="0.3" />
+        <path d="M24 12v4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+        <path d="M24 32v4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+        <path d="M12 24h4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+        <path d="M32 24h4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+        <path d="M24 24l7-7" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" />
+        <circle cx="24" cy="24" r="2.5" fill="currentColor" />
+        <path d="M33 10l3-3" stroke="currentColor" strokeWidth="2" strokeLinecap="round" opacity="0.5" />
+        <path d="M36 7l-1 3.5 3.5-1" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" opacity="0.5" />
       </svg>
     ),
   },
@@ -21,9 +30,13 @@ const advantages = [
     title: "Честная цена",
     description: "Расчёт стоимости сразу при заказе. Никаких скрытых доплат.",
     icon: (
-      <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-        <line x1="12" y1="1" x2="12" y2="23" />
-        <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
+      <svg width="40" height="40" viewBox="0 0 48 48" fill="none">
+        {/* Hand with coin / transparent pricing */}
+        <path d="M8 38V26a2 2 0 0 1 2-2h4l6-4h6l2 2h6a2 2 0 0 1 2 2v2l-10 6H20" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+        <path d="M8 26l-2 2v10l2 2" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" opacity="0.4" />
+        <circle cx="30" cy="14" r="9" stroke="currentColor" strokeWidth="2" />
+        <circle cx="30" cy="14" r="6" stroke="currentColor" strokeWidth="1" strokeDasharray="2 2" opacity="0.3" />
+        <text x="30" y="18" textAnchor="middle" fill="currentColor" fontSize="12" fontWeight="bold">₽</text>
       </svg>
     ),
   },
@@ -32,9 +45,12 @@ const advantages = [
     title: "Аккуратность",
     description: "Бережное отношение к вашим вещам. Мебель, техника — всё в целости.",
     icon: (
-      <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-        <polyline points="9 12 11 14 15 10" />
+      <svg width="40" height="40" viewBox="0 0 48 48" fill="none">
+        {/* Box with heart / careful handling */}
+        <path d="M6 18l18-10 18 10v20L24 48 6 38V18z" stroke="currentColor" strokeWidth="2" strokeLinejoin="round" />
+        <path d="M6 18l18 10 18-10" stroke="currentColor" strokeWidth="2" strokeLinejoin="round" opacity="0.3" />
+        <path d="M24 28v20" stroke="currentColor" strokeWidth="1.5" opacity="0.3" />
+        <path d="M24 20c0-3 2.5-5 5-3s-5 7-5 7-8-5-5-7 5 0 5 3z" fill="currentColor" opacity="0.8" />
       </svg>
     ),
   },
@@ -43,9 +59,16 @@ const advantages = [
     title: "Водитель-грузчик",
     description: "Помогу с погрузкой и разгрузкой. Два в одном — экономия на отдельном грузчике.",
     icon: (
-      <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
-        <circle cx="12" cy="7" r="4" />
+      <svg width="40" height="40" viewBox="0 0 48 48" fill="none">
+        {/* Person lifting box — 2in1 */}
+        <circle cx="20" cy="10" r="5" stroke="currentColor" strokeWidth="2" />
+        <path d="M12 42v-12a8 8 0 0 1 8-8h0a8 8 0 0 1 8 8v12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+        <path d="M16 30l-2-4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+        <rect x="28" y="16" width="14" height="12" rx="2" stroke="currentColor" strokeWidth="2" />
+        <path d="M28 20h14" stroke="currentColor" strokeWidth="1.5" opacity="0.3" />
+        <path d="M35 16v-3" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+        <path d="M24 28l4-4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" opacity="0.5" />
+        <path d="M32 28l-4 0" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeDasharray="2 2" opacity="0.4" />
       </svg>
     ),
   },
