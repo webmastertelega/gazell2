@@ -3,8 +3,10 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import Button from "@/components/ui/Button";
+import type { Contacts, Logo } from "@/config/siteConfig";
 
-export default function Hero() {
+export default function Hero({ contacts, logo }: { contacts: Contacts; logo: Logo }) {
+  void logo;
   const [formData, setFormData] = useState({
     name: "",
     phone: "",
@@ -70,16 +72,16 @@ export default function Hero() {
             <div className="grid grid-cols-2 gap-3 mb-8">
               {/* Row 1 */}
               <a
-                href="tel:+70001234567"
+                href={contacts.phoneHref}
                 className="inline-flex items-center gap-2 bg-green-500 text-white px-5 py-3 rounded-xl font-unbounded text-sm font-medium hover:bg-green-600 transition-all shadow-lg shadow-green-500/25 hover:-translate-y-0.5"
               >
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
                 </svg>
-                <span className="whitespace-nowrap">+7 (000) 123-45-67</span>
+                <span className="whitespace-nowrap">{contacts.phone}</span>
               </a>
               <a
-                href="https://t.me/max"
+                href={contacts.telegramHref}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 bg-[#229ED9] text-white px-5 py-3 rounded-xl font-unbounded text-sm font-medium hover:bg-[#1a8abf] transition-all shadow-lg shadow-[#229ED9]/25 hover:-translate-y-0.5"
@@ -91,17 +93,17 @@ export default function Hero() {
               </a>
               {/* Row 2 */}
               <a
-                href="mailto:info@example.com"
+                href={`mailto:${contacts.email}`}
                 className="inline-flex items-center gap-2 bg-primary text-white px-5 py-3 rounded-xl font-unbounded text-sm font-medium hover:bg-primary-dark transition-all shadow-lg shadow-primary/25 hover:-translate-y-0.5"
               >
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <rect x="2" y="4" width="20" height="16" rx="2" />
                   <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
                 </svg>
-                <span className="whitespace-nowrap">info@example.com</span>
+                <span className={`truncate min-w-0 ${contacts.email.length > 20 ? "text-[11px]" : ""}`}>{contacts.email}</span>
               </a>
               <a
-                href="https://m.me/max"
+                href={contacts.maxHref}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 bg-gradient-to-r from-[#00B2FF] to-[#006AFF] text-white px-5 py-3 rounded-xl font-unbounded text-sm font-medium hover:opacity-90 transition-all shadow-lg shadow-[#006AFF]/25 hover:-translate-y-0.5"
@@ -218,11 +220,12 @@ export default function Hero() {
           {[
             {
               icon: (
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <rect x="1" y="3" width="15" height="13" />
-                  <polygon points="16 8 20 8 23 11 23 16 16 16 16 8" />
-                  <circle cx="5.5" cy="18.5" r="2.5" />
-                  <circle cx="18.5" cy="18.5" r="2.5" />
+                /* Длина: горизонтальные стрелки с корпусом кузова */
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                  <rect x="3" y="8" width="18" height="8" rx="1.5" />
+                  <line x1="3" y1="20" x2="21" y2="20" />
+                  <line x1="3" y1="18.5" x2="3" y2="21.5" />
+                  <line x1="21" y1="18.5" x2="21" y2="21.5" />
                 </svg>
               ),
               iconColor: "text-primary",
@@ -232,9 +235,13 @@ export default function Hero() {
             },
             {
               icon: (
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z" />
-                  <line x1="4" y1="22" x2="4" y2="15" />
+                /* Ширина: вертикальная двусторонняя стрелка с боковыми стенками */
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                  <line x1="12" y1="3" x2="12" y2="21" />
+                  <polyline points="9 6 12 3 15 6" />
+                  <polyline points="9 18 12 21 15 18" />
+                  <line x1="4" y1="3" x2="4" y2="21" strokeWidth="1.2" strokeDasharray="2 2" />
+                  <line x1="20" y1="3" x2="20" y2="21" strokeWidth="1.2" strokeDasharray="2 2" />
                 </svg>
               ),
               iconColor: "text-green-600",
@@ -244,10 +251,13 @@ export default function Hero() {
             },
             {
               icon: (
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <polyline points="12 17 12 3" />
-                  <path d="m5 10 7-7 7 7" />
-                  <line x1="3" y1="21" x2="21" y2="21" />
+                /* Высота: прямоугольник кузова с вертикальной меткой */
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                  <rect x="6" y="5" width="12" height="14" rx="1.5" />
+                  <line x1="2" y1="5" x2="2" y2="19" />
+                  <line x1="0.5" y1="5" x2="3.5" y2="5" />
+                  <line x1="0.5" y1="19" x2="3.5" y2="19" />
+                  <line x1="2" y1="12" x2="6" y2="12" strokeDasharray="1.5 1.5" />
                 </svg>
               ),
               iconColor: "text-accent-red",
@@ -257,8 +267,13 @@ export default function Hero() {
             },
             {
               icon: (
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                /* Грузоподъёмность: весы с чашами */
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                  <line x1="12" y1="3" x2="12" y2="21" />
+                  <line x1="3" y1="7" x2="21" y2="7" />
+                  <path d="M5 7 Q3 11 3 13 Q3 16 6 16 Q9 16 9 13 Q9 11 7 7" />
+                  <path d="M19 7 Q21 11 21 13 Q21 16 18 16 Q15 16 15 13 Q15 11 17 7" />
+                  <line x1="9" y1="21" x2="15" y2="21" />
                 </svg>
               ),
               iconColor: "text-accent-purple",
@@ -268,9 +283,12 @@ export default function Hero() {
             },
             {
               icon: (
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <circle cx="12" cy="12" r="10" />
-                  <polyline points="12 6 12 12 16 14" />
+                /* Подача: молния + минимальное время */
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                  <circle cx="12" cy="12" r="9" />
+                  <polyline points="12 7 12 12 15 14" />
+                  <line x1="5.5" y1="3.5" x2="7.5" y2="5.5" strokeWidth="1.4" />
+                  <line x1="18.5" y1="3.5" x2="16.5" y2="5.5" strokeWidth="1.4" />
                 </svg>
               ),
               iconColor: "text-accent-orange",
@@ -280,10 +298,13 @@ export default function Hero() {
             },
             {
               icon: (
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M12 2L2 7l10 5 10-5-10-5z" />
-                  <path d="M2 17l10 5 10-5" />
-                  <path d="M2 12l10 5 10-5" />
+                /* Объём: 3D-ящик изометрический */
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                  <polygon points="12 3 21 8 21 16 12 21 3 16 3 8" />
+                  <line x1="12" y1="3" x2="12" y2="21" />
+                  <line x1="3" y1="8" x2="21" y2="8" />
+                  <line x1="3" y1="16" x2="12" y2="12" />
+                  <line x1="21" y1="16" x2="12" y2="12" />
                 </svg>
               ),
               iconColor: "text-primary",
@@ -308,21 +329,6 @@ export default function Hero() {
         </motion.div>
       </div>
 
-      {/* Scroll indicator */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.5 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2"
-      >
-        <motion.div
-          animate={{ y: [0, 8, 0] }}
-          transition={{ repeat: Infinity, duration: 2 }}
-          className="w-6 h-10 border-2 border-text-light rounded-full flex items-start justify-center p-1.5"
-        >
-          <div className="w-1.5 h-1.5 bg-text-light rounded-full" />
-        </motion.div>
-      </motion.div>
     </section>
   );
 }

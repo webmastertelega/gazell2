@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
+import type { Logo, Contacts } from "@/config/siteConfig";
 
 const navLinks = [
   { href: "#services", label: "Услуги" },
@@ -12,7 +13,8 @@ const navLinks = [
   { href: "#contact", label: "Контакты" },
 ];
 
-export default function Header() {
+export default function Header({ logo, contacts }: { logo: Logo; contacts: Contacts }) {
+  void contacts;
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -37,8 +39,8 @@ export default function Header() {
             height={46}
             className="object-contain"
           />
-          Артем{" "}
-          <span className="text-gradient">на газели</span>
+          {logo.text}{" "}
+          <span className="text-gradient">{logo.accent}</span>
         </a>
 
         {/* Desktop nav */}

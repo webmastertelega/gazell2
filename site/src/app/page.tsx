@@ -1,5 +1,3 @@
-"use client";
-
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import FloatingButtons from "@/components/layout/FloatingButtons";
@@ -12,24 +10,27 @@ import Vehicle from "@/components/sections/Vehicle";
 import Coverage from "@/components/sections/Coverage";
 import FAQ from "@/components/sections/FAQ";
 import Contact from "@/components/sections/Contact";
+import { getConfigServer } from "@/config/getConfig";
 
 export default function Home() {
+  const config = getConfigServer();
+
   return (
     <>
-      <Header />
+      <Header logo={config.logo} contacts={config.contacts} />
       <main>
-        <Hero />
-        <Services />
+        <Hero contacts={config.contacts} logo={config.logo} />
+        <Services services={config.services} />
         <Advantages />
-        <Pricing />
+        <Pricing pricing={config.pricing} />
         <Calculator />
-        <Vehicle />
-        <Coverage />
-        <FAQ />
-        <Contact />
+        <Vehicle vehicle={config.vehicle} />
+        <Coverage coverage={config.coverage} />
+        <FAQ faq={config.faq} />
+        <Contact contacts={config.contacts} />
       </main>
       <Footer />
-      <FloatingButtons />
+      <FloatingButtons contacts={config.contacts} />
     </>
   );
 }

@@ -4,39 +4,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import SectionWrapper from "@/components/ui/SectionWrapper";
 import SectionTitle from "@/components/ui/SectionTitle";
-
-const faqs = [
-  {
-    question: "Как оформить заказ?",
-    answer:
-      "Оставьте заявку на сайте, напишите в Telegram или позвоните. Я свяжусь с вами, уточню детали и назову точную стоимость.",
-  },
-  {
-    question: "Какие грузы перевозите?",
-    answer:
-      "Мебель, бытовую технику, стройматериалы, личные вещи при переезде, товары для бизнеса, оборудование — практически всё, что помещается в кузов 4.2×2×1.8 м и весит до 1.5 тонн.",
-  },
-  {
-    question: "Сколько стоит подача машины?",
-    answer:
-      "Подача по городу включена в стоимость. За пределами Тюмени — подача оплачивается дополнительно.",
-  },
-  {
-    question: "Можно ли заказать перевозку в выходные или праздники?",
-    answer:
-      "Да, работаю без выходных. Стоимость в выходные и праздничные дни не меняется.",
-  },
-  {
-    question: "Как производится оплата?",
-    answer:
-      "Наличные или перевод на карту. Оплата по факту выполнения работы.",
-  },
-  {
-    question: "Помогаете ли с погрузкой/разгрузкой?",
-    answer:
-      "Да, я работаю как водитель-грузчик. Стоимость услуги грузчика — 700 ₽/час. Помогу занести вещи на лифте.",
-  },
-];
+import type { FaqItem } from "@/config/siteConfig";
 
 function FAQItem({
   question,
@@ -88,7 +56,7 @@ function FAQItem({
   );
 }
 
-export default function FAQ() {
+export default function FAQ({ faq }: { faq: FaqItem[] }) {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
@@ -100,11 +68,11 @@ export default function FAQ() {
       />
 
       <div className="max-w-3xl mx-auto bg-white rounded-2xl shadow-card p-6 md:p-8">
-        {faqs.map((faq, i) => (
+        {faq.map((item, i) => (
           <FAQItem
             key={i}
-            question={faq.question}
-            answer={faq.answer}
+            question={item.question}
+            answer={item.answer}
             isOpen={openIndex === i}
             onClick={() => setOpenIndex(openIndex === i ? null : i)}
           />
