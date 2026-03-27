@@ -30,10 +30,12 @@ export async function POST(req: NextRequest) {
 
     writeFileSync(join(UPLOAD_DIR, filename), buffer);
 
-    // update config
-    const config = JSON.parse(readFileSync(CONFIG_PATH, "utf-8"));
-    config.vehicle[field] = `/uploads/${filename}`;
-    writeFileSync(CONFIG_PATH, JSON.stringify(config, null, 2), "utf-8");
+    // update config only for named slots (not gallery — handled client-side)
+    if (!field.startsWith("gallery_")) {
+      const config = JSON.parse(readFileSync(CONFIG_PATH, "utf-8"));
+      config.vehicle[field] = `/uploads/${filename}`;
+      writeFileSync(CONFIG_PATH, JSON.stringify(config, null, 2), "utf-8");
+    }
 
     return NextResponse.json({ url: `/uploads/${filename}` });
   } catch {

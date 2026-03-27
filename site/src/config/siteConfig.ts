@@ -42,6 +42,7 @@ export interface Vehicle {
   photo2: string;
   photo3: string;
   photo4: string;
+  gallery: string[];
 }
 
 export interface SiteConfig {

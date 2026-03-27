@@ -1,11 +1,13 @@
-export default function Footer() {
+import type { Contacts, Logo } from "@/config/siteConfig";
+
+export default function Footer({ contacts, logo }: { contacts: Contacts; logo: Logo }) {
   return (
     <footer className="bg-text py-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid md:grid-cols-3 gap-8">
           <div>
             <h3 className="font-unbounded font-bold text-xl text-white mb-3">
-              Артем <span className="text-primary-light">на газели</span>
+              {logo.text} <span className="text-primary-light">{logo.accent}</span>
             </h3>
             <p className="text-gray-400 text-sm">
               Грузоперевозки по Тюмени и межгороду. Быстро, аккуратно, по честной цене.
@@ -40,19 +42,19 @@ export default function Footer() {
               Контакты
             </h4>
             <div className="flex flex-col gap-2 text-sm text-gray-400">
-              <a href="tel:+70001234567" className="hover:text-white transition-colors">
-                +7 (000) 123-45-67
+              <a href={contacts.phoneHref} className="hover:text-white transition-colors">
+                {contacts.phone}
               </a>
-              <a href="mailto:info@example.com" className="hover:text-white transition-colors">
-                info@example.com
+              <a href={`mailto:${contacts.email}`} className="hover:text-white transition-colors">
+                {contacts.email}
               </a>
-              <span>Тюмень и область</span>
+              <span>{contacts.city}</span>
             </div>
           </div>
         </div>
 
         <div className="border-t border-gray-700 mt-8 pt-8 text-center text-gray-500 text-sm">
-          &copy; {new Date().getFullYear()} Артем на газели. Все права защищены.
+          &copy; {new Date().getFullYear()} {logo.text} {logo.accent}. Все права защищены.
         </div>
       </div>
     </footer>

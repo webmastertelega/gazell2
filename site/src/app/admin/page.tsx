@@ -335,6 +335,64 @@ export default function AdminPage() {
                 );
               })}
             </div>
+
+            {/* Gallery strip */}
+            <div className="mt-6 pt-6 border-t border-gray-100">
+              <p className="text-sm font-medium text-gray-700 mb-1">Дополнительные фото (галерея)</p>
+              <p className="text-xs text-gray-400 mb-4">Отображаются полосой под основными фото, кликабельны в лайтбоксе</p>
+              <div className="flex gap-3 flex-wrap">
+                {(config.vehicle.gallery ?? []).map((src: string, idx: number) => (
+                  <div key={idx} className="relative group">
+                    <div className="w-24 h-24 rounded-xl overflow-hidden shadow-sm">
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img src={src} alt="" className="w-full h-full object-cover" />
+                    </div>
+                    <button
+                      type="button"
+                      onClick={() => {
+                        const next = (config.vehicle.gallery ?? []).filter((_: string, i: number) => i !== idx);
+                        set("vehicle.gallery", next);
+                      }}
+                      className="absolute -top-2 -right-2 w-6 h-6 bg-red-500 text-white rounded-full text-xs flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity shadow"
+                    >
+                      ×
+                    </button>
+                  </div>
+                ))}
+                <label className="w-24 h-24 rounded-xl border-2 border-dashed border-gray-200 hover:border-indigo-300 flex flex-col items-center justify-center cursor-pointer transition-colors bg-gray-50 hover:bg-indigo-50">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-gray-400 mb-1">
+                    <line x1="12" y1="5" x2="12" y2="19" /><line x1="5" y1="12" x2="19" y2="12" />
+                  </svg>
+                  <span className="text-xs text-gray-400">Добавить</span>
+                  <input
+                    type="file"
+                    accept="image/*"
+                    multiple
+                    className="hidden"
+                    onChange={async (e) => {
+                      const files = Array.from(e.target.files ?? []);
+                      for (const file of files) {
+                        const fd = new FormData();
+                        fd.append("file", file);
+                        fd.append("field", `gallery_${Date.now()}`);
+                        const res = await fetch("/api/upload", { method: "POST", body: fd });
+                        const data = await res.json();
+                        if (data.url) {
+                          setConfig((prev) => {
+                            if (!prev) return prev;
+                            const next = structuredClone(prev);
+                            next.vehicle.gallery = [...(next.vehicle.gallery ?? []), data.url];
+                            return next;
+                          });
+                          setSaved(false);
+                        }
+                      }
+                      e.target.value = "";
+                    }}
+                  />
+                </label>
+              </div>
+            </div>
           </Card>
         )}
 

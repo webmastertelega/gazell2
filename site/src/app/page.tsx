@@ -29,7 +29,7 @@ export default function Home() {
         <FAQ faq={config.faq} />
         <Contact contacts={config.contacts} />
       </main>
-      <Footer />
+      <Footer contacts={config.contacts} logo={config.logo} />
       <FloatingButtons contacts={config.contacts} />
     </>
   );

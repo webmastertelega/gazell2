@@ -112,9 +112,15 @@
     }
   ],
   "vehicle": {
-    "photo1": "/uploads/vehicle_photo1_1774615185614.jpg",
-    "photo2": "/uploads/vehicle_photo2_1774615197652.png",
-    "photo3": "/uploads/vehicle_photo3_1774615824365.png",
-    "photo4": "/uploads/vehicle_photo4_1774615841472.png"
+    "photo1": "/uploads/vehicle_photo1_1774618579060.png",
+    "photo2": "/uploads/vehicle_photo2_1774618626114.png",
+    "photo3": "/uploads/vehicle_photo3_1774618608339.png",
+    "photo4": "/uploads/vehicle_photo4_1774618633546.png",
+    "gallery": [
+      "/uploads/vehicle_gallery_1774619463299_1774619468678.png",
+      "/uploads/vehicle_gallery_1774619468944_1774619476493.png",
+      "/uploads/vehicle_gallery_1774619476755_1774619482995.png",
+      "/uploads/vehicle_gallery_1774619483268_1774619489078.png"
+    ]
   }
 }
