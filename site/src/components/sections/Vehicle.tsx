@@ -114,12 +114,11 @@ export default function Vehicle({ vehicle }: { vehicle: VehicleType }) {
                   onClick={() => openLightbox(mainPhotos.length + n)}
                   className="flex-shrink-0 w-20 h-20 rounded-xl overflow-hidden shadow-sm group relative"
                 >
-                  <Image
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
                     src={src}
                     alt={`Галерея ${n + 1}`}
-                    fill
-                    sizes="80px"
-                    className="object-cover transition-transform duration-300 group-hover:scale-110"
+                    className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
                   />
                   <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors rounded-xl" />
                   <div className="absolute inset-0 rounded-xl ring-1 ring-inset ring-black/8" />
